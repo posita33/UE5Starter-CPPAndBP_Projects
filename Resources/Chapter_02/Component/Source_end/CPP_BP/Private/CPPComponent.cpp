@@ -19,6 +19,9 @@ ACPPComponent::ACPPComponent()
 	UStaticMesh* Mesh = LoadObject<UStaticMesh>(NULL, TEXT("/Game/CPP_BP/Meshes/SM_SampleCube"), NULL, LOAD_None, NULL);
 	StaticMesh->SetStaticMesh(Mesh);
 
+	// StaticMeshComponent‚ğRootComponent‚ÉAttach‚·‚é
+	StaticMesh->SetupAttachment(RootComponent);
+
 	// ArrowComponent‚ğì¬‚·‚é
 	Arrow = CreateDefaultSubobject<UArrowComponent>(TEXT("ArrowComponent"));
 
