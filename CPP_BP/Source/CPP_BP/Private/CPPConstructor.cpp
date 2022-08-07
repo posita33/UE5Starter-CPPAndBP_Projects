@@ -27,12 +27,6 @@ ACPPConstructor::ACPPConstructor()
 	StaticMesh->SetupAttachment(RootComponent);
 }
 
-ACPPConstructor::~ACPPConstructor()
-{
-	// Destructor‚ÅPrintString
-	UKismetSystemLibrary::PrintString(this, TEXT("Destructor Class destroyed"), true, true, FColor::Cyan, 2.f);
-}
-
 // Called when the game starts or when spawned
 void ACPPConstructor::BeginPlay()
 {

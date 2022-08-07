@@ -15,9 +15,6 @@ public:
 	// Sets default values for this actor's properties
 	ACPPConstructor();
 
-	// Destructor
-	~ACPPConstructor();
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

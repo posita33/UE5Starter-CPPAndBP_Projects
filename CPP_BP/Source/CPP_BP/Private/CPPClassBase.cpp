@@ -27,14 +27,10 @@ ACPPClassBase::ACPPClassBase()
 // Called when the game starts or when spawned
 void ACPPClassBase::BeginPlay()
 {
-	// 親クラスのデータメンバを変更する
-	//VarChildNum = 1000;
+	Super::BeginPlay();
 
 	// 自分のメンバ関数を呼び出す
 	CallParentFunc();
-
-	// 派生クラスが持っているメンバ関数を呼び出す
-	//CallChildFunc();
 }
 
 void ACPPClassBase::CallParentFunc()
