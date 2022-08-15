@@ -18,17 +18,21 @@ protected:
 public:
 	
 	// 親クラスのメンバ関数(Public)
+	UFUNCTION(BlueprintCallable, Category = CPP_And_Blueprint)
 	void CallPublicFunc();
 
 	// 親クラスのデータメンバ(Public)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Default)
 	int VarPublicNum = 10;
 
 protected:
 
 	// 親クラスのメンバ関数(Protected)
+	UFUNCTION(BlueprintCallable, Category = CPP_And_Blueprint)
 	void CallProtectedFunc();
 
 	// 親クラスのデータメンバ(Protected)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Default)
 	int VarProtectedNum = 20;
 
 private:
