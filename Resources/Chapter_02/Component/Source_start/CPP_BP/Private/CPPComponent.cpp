@@ -7,9 +7,19 @@
 // Called when the game starts or when spawned
 void ACPPComponent::BeginPlay()
 {
+	Super::BeginPlay();
+
+	// å¤‰æ•°ã‚’ä½œæˆã™ã‚‹
 	FString Message = "C++ Hello World!";
 
-	// PrintStringƒm[ƒh‚Æ“¯‚¶ˆ—
-	// UKismetSystemLibraryƒNƒ‰ƒX‚ÌPrintStringŠÖ”‚ğŒÄ‚Ño‚·
-	UKismetSystemLibrary::PrintString(this, Message, true, true, TextColor, Duration);
+	// PrintStringãƒãƒ¼ãƒ‰ã¨åŒã˜å‡¦ç†
+	// UKismetSystemLibraryã‚¯ãƒ©ã‚¹ã®PrintStringé–¢æ•°ã‚’å‘¼ã³å‡ºã™
+	UKismetSystemLibrary::PrintString(
+		this
+		, Message
+		, true
+		, true
+		, TextColor// Textã®ã‚«ãƒ©ãƒ¼æƒ…å ±ã«å¤‰æ•°TextColorã‚’è¨­å®š
+		, Duration
+		, TEXT("None"));
 }
