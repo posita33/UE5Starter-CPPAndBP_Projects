@@ -10,13 +10,13 @@ void ACPPFlowControlSwitch::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// å¤‰æ•°ã‚’ä½œæˆã™ã‚‹
+	// •Ï”‚ğì¬‚·‚é
 	FString Message = "C++ Hello World!";
 
 	if (IsPrintHello)
 	{
-		// PrintStringãƒãƒ¼ãƒ‰ã¨åŒã˜å‡¦ç†
-		// UKismetSystemLibraryã‚¯ãƒ©ã‚¹ã®PrintStringé–¢æ•°ã‚’å‘¼ã³å‡ºã™
+		// PrintStringƒm[ƒh‚Æ“¯‚¶ˆ—
+		// UKismetSystemLibraryƒNƒ‰ƒX‚ÌPrintStringŠÖ”‚ğŒÄ‚Ño‚·
 		UKismetSystemLibrary::PrintString(this, Message, true, true, TextColor, Duration);
 	}
 	else
@@ -25,7 +25,7 @@ void ACPPFlowControlSwitch::BeginPlay()
 		{
 			case 0:
 			{
-				// Add(è¶³ã—ç®—)ã®å‡¦ç†
+				// Add(‘«‚µZ)‚Ìˆ—
 				int32 ResultAdd = UKismetMathLibrary::Add_IntInt(CalcVarA, CalcVarB);
 				FString StrResultAdd = FString::Printf(TEXT("%d"), ResultAdd);
 				UKismetSystemLibrary::PrintString(
@@ -40,7 +40,7 @@ void ACPPFlowControlSwitch::BeginPlay()
 			}
 			case 1:
 			{
-				// Subtract(å¼•ãç®—)ã®å‡¦ç†
+				// Subtract(ˆø‚«Z)‚Ìˆ—
 				int32 ResultSubtract = CalcVarA - CalcVarB;
 				FString StrResultSubtract = FString::Printf(TEXT("%d"), ResultSubtract);
 				UKismetSystemLibrary::PrintString(
@@ -55,7 +55,7 @@ void ACPPFlowControlSwitch::BeginPlay()
 			}
 			case 2:
 			{
-				// Multiply(æ›ã‘ç®—)ã®å‡¦ç†
+				// Multiply(Š|‚¯Z)‚Ìˆ—
 				int32 ResultMultiply = CalcVarA * CalcVarB;
 				FString StrResultMultiply = FString::Printf(TEXT("%d"), ResultMultiply);
 				UKismetSystemLibrary::PrintString(
@@ -70,7 +70,7 @@ void ACPPFlowControlSwitch::BeginPlay()
 			}
 			default:
 			{
-				// Divide(å‰²ã‚Šç®—)ã®å‡¦ç†
+				// Divide(Š„‚èZ)‚Ìˆ—
 				float ResultDivide = (float)CalcVarA / (float)CalcVarB;
 				FString StrResultDivide = FString::Printf(TEXT("%f"), ResultDivide);
 				UKismetSystemLibrary::PrintString(
