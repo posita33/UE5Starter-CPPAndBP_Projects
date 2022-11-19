@@ -16,21 +16,22 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	// PrintStringŠÖ”‚ÌDuration‚Éİ’è‚·‚é•Ï”
+	// PrintStringé–¢æ•°ã®Durationã«è¨­å®šã™ã‚‹å¤‰æ•°
 	const float Duration = 10.0f;
 
-	// PrintStringŠÖ”‚ÌTextColor‚Éİ’è‚·‚é•Ï”
+	// PrintStringé–¢æ•°ã®TextColorã«è¨­å®šã™ã‚‹å¤‰æ•°
 	const FLinearColor TextColor = FColor(255, 255, 255);
 
-	// ŒvZ—p‚Ì•Ï”
+	// è¨ˆç®—ç”¨ã®å¤‰æ•°
 	int32 CalcVarA = 7;
 	int32 CalcVarB = 3;
 
-	// Flow Control—p‚Ì•Ï”
-	bool IsPrintHello = true;
+	// Flow Controlç”¨ã®å¤‰æ•°
+	bool IsPrintHello = false;
 	int32 CalcType = 1;
 	int32 NumA = 1;
 	int32 NumB = 2;
 	int32 NumC = 15;
 	bool IsBlueprint = true;
+
 };

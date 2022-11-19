@@ -3,26 +3,26 @@
 
 #include "CPPFlowControlBranch.h"
 #include "Kismet/KismetSystemLibrary.h"
-#include "Kismet/KismetMathLibrary.h" // è¿½åŠ 
+#include "Kismet/KismetMathLibrary.h" // ’Ç‰Á
 
 // Called when the game starts or when spawned
 void ACPPFlowControlBranch::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// å¤‰æ•°ã‚’ä½œæˆã™ã‚‹
+	// •Ï”‚ğì¬‚·‚é
 	FString Message = "C++ Hello World!";
 
 	if (IsPrintHello)
 	{
-		// PrintStringãƒãƒ¼ãƒ‰ã¨åŒã˜å‡¦ç†
-		// UKismetSystemLibraryã‚¯ãƒ©ã‚¹ã®PrintStringé–¢æ•°ã‚’å‘¼ã³å‡ºã™
+		// PrintStringƒm[ƒh‚Æ“¯‚¶ˆ—
+		// UKismetSystemLibraryƒNƒ‰ƒX‚ÌPrintStringŠÖ”‚ğŒÄ‚Ño‚·
 		UKismetSystemLibrary::PrintString(
 			this
 			, Message
 			, true
 			, true
-			, TextColor// Textã®ã‚«ãƒ©ãƒ¼æƒ…å ±ã«å¤‰æ•°TextColorã‚’è¨­å®š
+			, TextColor// Text‚ÌƒJƒ‰[î•ñ‚É•Ï”TextColor‚ğİ’è
 			, Duration
 			, TEXT("None"));
 	}
@@ -30,7 +30,7 @@ void ACPPFlowControlBranch::BeginPlay()
 	{
 		if (CalcType == 0)
 		{
-			// Add(è¶³ã—ç®—)ã®å‡¦ç†
+			// Add(‘«‚µZ)‚Ìˆ—
 			int32 ResultAdd = UKismetMathLibrary::Add_IntInt(CalcVarA, CalcVarB);
 			FString StrResultAdd = FString::Printf(TEXT("%d"), ResultAdd);
 			UKismetSystemLibrary::PrintString(
@@ -44,7 +44,7 @@ void ACPPFlowControlBranch::BeginPlay()
 		}
 		else if (CalcType == 1)
 		{
-			// Subtract(å¼•ãç®—)ã®å‡¦ç†
+			// Subtract(ˆø‚«Z)‚Ìˆ—
 			int32 ResultSubtract = CalcVarA - CalcVarB;
 			FString StrResultSubtract = FString::Printf(TEXT("%d"), ResultSubtract);
 			UKismetSystemLibrary::PrintString(
@@ -58,7 +58,7 @@ void ACPPFlowControlBranch::BeginPlay()
 		}
 		else if (CalcType == 2)
 		{
-			// Multiply(æ›ã‘ç®—)ã®å‡¦ç†
+			// Multiply(Š|‚¯Z)‚Ìˆ—
 			int32 ResultMultiply = CalcVarA * CalcVarB;
 			FString StrResultMultiply = FString::Printf(TEXT("%d"), ResultMultiply);
 			UKismetSystemLibrary::PrintString(
@@ -72,7 +72,7 @@ void ACPPFlowControlBranch::BeginPlay()
 		}
 		else
 		{
-			// Divide(å‰²ã‚Šç®—)ã®å‡¦ç†
+			// Divide(Š„‚èZ)‚Ìˆ—
 			float ResultDivide = (float)CalcVarA / (float)CalcVarB;
 			FString StrResultDivide = FString::Printf(TEXT("%f"), ResultDivide);
 			UKismetSystemLibrary::PrintString(
