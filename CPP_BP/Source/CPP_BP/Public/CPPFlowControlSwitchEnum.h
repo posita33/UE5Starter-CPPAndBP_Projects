@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "CPPCalcType.h" // ’Ç‰Á
 #include "GameFramework/Actor.h"
 #include "CPPFlowControlSwitchEnum.generated.h"
 
@@ -16,18 +17,18 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	// PrintStringé–¢æ•°ã®Durationã«è¨­å®šã™ã‚‹å¤‰æ•°
+	// PrintStringŠÖ”‚ÌDuration‚Éİ’è‚·‚é•Ï”
 	const float Duration = 10.0f;
 
-	// PrintStringé–¢æ•°ã®TextColorã«è¨­å®šã™ã‚‹å¤‰æ•°
+	// PrintStringŠÖ”‚ÌTextColor‚Éİ’è‚·‚é•Ï”
 	const FLinearColor TextColor = FColor(255, 255, 255);
 
-	// è¨ˆç®—ç”¨ã®å¤‰æ•°
+	// ŒvZ—p‚Ì•Ï”
 	int32 CalcVarA = 7;
 	int32 CalcVarB = 3;
 
-	// Flow Controlç”¨ã®å¤‰æ•°
+	// Flow Control—p‚Ì•Ï”
 	bool IsPrintHello = false;
-	int32 CalcType = 1;
+	ECPPCalcType CalcType = ECPPCalcType::Subtract;
 
 };
