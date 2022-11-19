@@ -9,7 +9,7 @@ void ACPPCalculation::BeginPlay()
 {
 	FString Message = "C++ Hello World!";
 
-	// PrintStringƒm[ƒh‚Æ“¯‚¶ˆ—
-	// UKismetSystemLibraryƒNƒ‰ƒX‚ÌPrintStringŠÖ”‚ğŒÄ‚Ño‚·
+	// PrintStringãƒãƒ¼ãƒ‰ã¨åŒã˜å‡¦ç†
+	// UKismetSystemLibraryã‚¯ãƒ©ã‚¹ã®PrintStringé–¢æ•°ã‚’å‘¼ã³å‡ºã™
 	UKismetSystemLibrary::PrintString(this, Message, true, true, TextColor, Duration);
 }

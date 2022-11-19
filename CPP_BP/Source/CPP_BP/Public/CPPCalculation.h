@@ -16,13 +16,13 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	// PrintStringé–¢æ•°ã®Durationã«è¨­å®šã™ã‚‹å¤‰æ•°
+	// PrintStringŠÖ”‚ÌDuration‚Éİ’è‚·‚é•Ï”
 	const float Duration = 10.0f;
 
-	// PrintStringé–¢æ•°ã®TextColorã«è¨­å®šã™ã‚‹å¤‰æ•°
+	// PrintStringŠÖ”‚ÌTextColor‚Éİ’è‚·‚é•Ï”
 	const FLinearColor TextColor = FLinearColor(0.0, 0.66, 1.0);
 
-	// è¨ˆç®—ç”¨ã®å¤‰æ•°
+	// ŒvZ—p‚Ì•Ï”
 	int32 CalcVarA = 7;
 	int32 CalcVarB = 3;
 };
