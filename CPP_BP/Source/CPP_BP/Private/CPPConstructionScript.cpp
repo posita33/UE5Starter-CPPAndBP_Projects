@@ -7,38 +7,38 @@
 // Sets default values
 ACPPConstructionScript::ACPPConstructionScript()
 {
-	// SceneComponentã‚’ä½œæˆã™ã‚‹
+	// SceneComponent‚ğì¬‚·‚é
 	DefaultSceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("SceneComponent"));
 
-	// SceneComponentã‚’RootComponentã«è¨­å®šã™ã‚‹
+	// SceneComponent‚ğRootComponent‚Éİ’è‚·‚é
 	RootComponent = DefaultSceneRoot;
 
-	// StaticMeshComponentã‚’ä½œæˆã™ã‚‹
+	// StaticMeshComponent‚ğì¬‚·‚é
 	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
 
-	// StaticMeshã‚’Laodã—ã¦StaticMeshComponentã®StaticMeshã«è¨­å®šã™ã‚‹
+	// StaticMesh‚ğLaod‚µ‚ÄStaticMeshComponent‚ÌStaticMesh‚Éİ’è‚·‚é
 	UStaticMesh* Mesh = LoadObject<UStaticMesh>(NULL, TEXT("/Game/CPP_BP/Meshes/SM_SampleCube"), NULL, LOAD_None, NULL);
 	StaticMesh->SetStaticMesh(Mesh);
 
-	// StaticMeshComponentã‚’RootComponentã«Attachã™ã‚‹
+	// StaticMeshComponent‚ğRootComponent‚ÉAttach‚·‚é
 	StaticMesh->SetupAttachment(RootComponent);
 
-	// ArrowComponentã‚’ä½œæˆã™ã‚‹
+	// ArrowComponent‚ğì¬‚·‚é
 	Arrow = CreateDefaultSubobject<UArrowComponent>(TEXT("ArrowComponent"));
 
-	// ArrowComponentã®ä½ç½®ã‚’è¨­å®šã™ã‚‹
+	// ArrowComponent‚ÌˆÊ’u‚ğİ’è‚·‚é
 	Arrow->SetRelativeLocation(FVector(30.0f, 0.0f, 0.0f));
 
-	// ArrowComponentã‚’StaticMeshComponentã«Attachã™ã‚‹
+	// ArrowComponent‚ğStaticMeshComponent‚ÉAttach‚·‚é
 	Arrow->SetupAttachment(StaticMesh);
 
-	// PointLightComponentã‚’ä½œæˆã™ã‚‹
+	// PointLightComponent‚ğì¬‚·‚é
 	PointLight = CreateDefaultSubobject<UPointLightComponent>(TEXT("PointLightComponent"));
 
-	// PointLightComponentã®ä½ç½®ã‚’è¨­å®šã™ã‚‹
+	// PointLightComponent‚ÌˆÊ’u‚ğİ’è‚·‚é
 	PointLight->SetRelativeLocation(FVector(130.0f, 0.0f, 0.0f));
 
-	// PointLightComponentã‚’StaticMeshComponentã«Attachã™ã‚‹
+	// PointLightComponent‚ğStaticMeshComponent‚ÉAttach‚·‚é
 	PointLight->SetupAttachment(StaticMesh);
 }
 
@@ -47,17 +47,29 @@ void ACPPConstructionScript::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// å¤‰æ•°ã‚’ä½œæˆã™ã‚‹
+	// •Ï”‚ğì¬‚·‚é
 	FString Message = "C++ Hello World!";
 
-	// PrintStringãƒãƒ¼ãƒ‰ã¨åŒã˜å‡¦ç†
-	// UKismetSystemLibraryã‚¯ãƒ©ã‚¹ã®PrintStringé–¢æ•°ã‚’å‘¼ã³å‡ºã™
+	// PrintStringƒm[ƒh‚Æ“¯‚¶ˆ—
+	// UKismetSystemLibraryƒNƒ‰ƒX‚ÌPrintStringŠÖ”‚ğŒÄ‚Ño‚·
 	UKismetSystemLibrary::PrintString(
 		this
 		, Message
 		, true
 		, true
-		, TextColor// Textã®ã‚«ãƒ©ãƒ¼æƒ…å ±ã«å¤‰æ•°TextColorã‚’è¨­å®š
+		, TextColor// Text‚ÌƒJƒ‰[î•ñ‚É•Ï”TextColor‚ğİ’è
 		, Duration
 		, TEXT("None"));
+}
+
+void ACPPConstructionScript::OnConstruction(const FTransform& Transform)
+{
+	// PointLight‚Ì•\¦E”ñ•\¦‚ğİ’è
+	PointLight->SetVisibility(bIsVisible);
+
+	// PointLight‚Ì‹­‚³‚ğİ’è
+	PointLight->SetIntensity(Intensity);
+
+	// PointLight‚ÌLightColor‚ğİ’è
+	PointLight->SetLightColor(LightColor);
 }

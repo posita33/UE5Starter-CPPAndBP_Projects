@@ -19,29 +19,29 @@ public:
 
 	// Scene Component
 	UPROPERTY(EditAnywhere)
-	USceneComponent* DefaultSceneRoot;
+	TObjectPtr<USceneComponent> DefaultSceneRoot;
 
 	// StaticMesh Component
 	UPROPERTY(EditAnywhere)
-	UStaticMeshComponent* StaticMesh;
+	TObjectPtr<UStaticMeshComponent> StaticMesh;
 
 	// Arrow Component
 	UPROPERTY(VisibleAnywhere)
-	UArrowComponent* Arrow;
+	TObjectPtr<UArrowComponent> Arrow;
 
 	// PointLightComponent Component
 	UPROPERTY(EditAnywhere)
-	UPointLightComponent* PointLight;
+	TObjectPtr<UPointLightComponent> PointLight;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
-	// PrintStringŠÖ”‚ÌDuration‚Éİ’è‚·‚é•Ï”
+	// PrintStringé–¢æ•°ã®Durationã«è¨­å®šã™ã‚‹å¤‰æ•°
 	const float Duration = 10.0f;
 
-	// PrintStringŠÖ”‚ÌTextColor‚Éİ’è‚·‚é•Ï”
+	// PrintStringé–¢æ•°ã®TextColorã«è¨­å®šã™ã‚‹å¤‰æ•°
 	const FLinearColor TextColor = FLinearColor(0.0, 0.66, 1.0);
 
 };

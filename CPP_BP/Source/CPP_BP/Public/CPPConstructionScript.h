@@ -50,10 +50,10 @@ private:
 	// ConstructionScript
 	virtual void OnConstruction(const FTransform& Transform) override;
 
-	// PrintStringé–¢æ•°ã®Durationã«è¨­å®šã™ã‚‹å¤‰æ•°
+	// PrintStringŠÖ”‚ÌDuration‚Éİ’è‚·‚é•Ï”
 	const float Duration = 10.0f;
 
-	// PrintStringé–¢æ•°ã®TextColorã«è¨­å®šã™ã‚‹å¤‰æ•°
+	// PrintStringŠÖ”‚ÌTextColor‚Éİ’è‚·‚é•Ï”
 	const FLinearColor TextColor = FLinearColor(0.0, 0.66, 1.0);
 
 };

@@ -4,61 +4,72 @@
 #include "CPPConstructionScript.h"
 #include "Kismet/KismetSystemLibrary.h"
 
+// Sets default values
 ACPPConstructionScript::ACPPConstructionScript()
 {
-	// SceneComponent‚ğì¬‚·‚é
+	// SceneComponentã‚’ä½œæˆã™ã‚‹
 	DefaultSceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("SceneComponent"));
 
-	// SceneComponent‚ğRootComponent‚Éİ’è‚·‚é
+	// SceneComponentã‚’RootComponentã«è¨­å®šã™ã‚‹
 	RootComponent = DefaultSceneRoot;
 
-	// StaticMeshComponent‚ğì¬‚·‚é
+	// StaticMeshComponentã‚’ä½œæˆã™ã‚‹
 	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
 
-	// StaticMesh‚ğLaod‚µ‚ÄStaticMeshComponent‚ÌStaticMesh‚Éİ’è‚·‚é
+	// StaticMeshã‚’Laodã—ã¦StaticMeshComponentã®StaticMeshã«è¨­å®šã™ã‚‹
 	UStaticMesh* Mesh = LoadObject<UStaticMesh>(NULL, TEXT("/Game/CPP_BP/Meshes/SM_SampleCube"), NULL, LOAD_None, NULL);
 	StaticMesh->SetStaticMesh(Mesh);
 
-	// StaticMeshComponent‚ğRootComponent‚ÉAttach‚·‚é
+	// StaticMeshComponentã‚’RootComponentã«Attachã™ã‚‹
 	StaticMesh->SetupAttachment(RootComponent);
 
-	// ArrowComponent‚ğì¬‚·‚é
+	// ArrowComponentã‚’ä½œæˆã™ã‚‹
 	Arrow = CreateDefaultSubobject<UArrowComponent>(TEXT("ArrowComponent"));
 
-	// ArrowComponent‚ÌˆÊ’u‚ğİ’è‚·‚é
+	// ArrowComponentã®ä½ç½®ã‚’è¨­å®šã™ã‚‹
 	Arrow->SetRelativeLocation(FVector(30.0f, 0.0f, 0.0f));
 
-	// ArrowComponent‚ğStaticMeshComponent‚ÉAttach‚·‚é
+	// ArrowComponentã‚’StaticMeshComponentã«Attachã™ã‚‹
 	Arrow->SetupAttachment(StaticMesh);
 
-	// PointLightComponent‚ğì¬‚·‚é
+	// PointLightComponentã‚’ä½œæˆã™ã‚‹
 	PointLight = CreateDefaultSubobject<UPointLightComponent>(TEXT("PointLightComponent"));
 
-	// PointLightComponent‚ÌˆÊ’u‚ğİ’è‚·‚é
+	// PointLightComponentã®ä½ç½®ã‚’è¨­å®šã™ã‚‹
 	PointLight->SetRelativeLocation(FVector(130.0f, 0.0f, 0.0f));
 
-	// PointLightComponent‚ğStaticMeshComponent‚ÉAttach‚·‚é
+	// PointLightComponentã‚’StaticMeshComponentã«Attachã™ã‚‹
 	PointLight->SetupAttachment(StaticMesh);
 }
 
 // Called when the game starts or when spawned
 void ACPPConstructionScript::BeginPlay()
 {
+	Super::BeginPlay();
+
+	// å¤‰æ•°ã‚’ä½œæˆã™ã‚‹
 	FString Message = "C++ Hello World!";
 
-	// PrintStringƒm[ƒh‚Æ“¯‚¶ˆ—
-	// UKismetSystemLibraryƒNƒ‰ƒX‚ÌPrintStringŠÖ”‚ğŒÄ‚Ño‚·
-	UKismetSystemLibrary::PrintString(this, Message, true, true, TextColor, Duration);
+	// PrintStringãƒãƒ¼ãƒ‰ã¨åŒã˜å‡¦ç†
+	// UKismetSystemLibraryã‚¯ãƒ©ã‚¹ã®PrintStringé–¢æ•°ã‚’å‘¼ã³å‡ºã™
+	UKismetSystemLibrary::PrintString(
+		this
+		, Message
+		, true
+		, true
+		, TextColor// Textã®ã‚«ãƒ©ãƒ¼æƒ…å ±ã«å¤‰æ•°TextColorã‚’è¨­å®š
+		, Duration
+		, TEXT("None"));
 }
 
 void ACPPConstructionScript::OnConstruction(const FTransform& Transform)
 {
-	// PointLight‚Ì•\¦E”ñ•\¦‚ğİ’è
+	// PointLightã®è¡¨ç¤ºãƒ»éè¡¨ç¤ºã‚’è¨­å®š
 	PointLight->SetVisibility(bIsVisible);
 
-	// PointLight‚Ì‹­‚³‚ğİ’è
+	// PointLightã®å¼·ã•ã‚’è¨­å®š
 	PointLight->SetIntensity(Intensity);
 
-	// PointLight‚ÌLightColor‚ğİ’è
+	// PointLightã®LightColorã‚’è¨­å®š
 	PointLight->SetLightColor(LightColor);
 }
