@@ -17,13 +17,13 @@ void ACPPEventDispatcher::BeginPlay()
 
 	if (IsPrintHello)
 	{
-		// PrintStringƒm[ƒh‚Æ“¯‚¶ˆ—
-		// UKismetSystemLibraryƒNƒ‰ƒX‚ÌPrintStringŠÖ”‚ğŒÄ‚Ño‚·
-		UKismetSystemLibrary::PrintString(this, Message, true, true, TextColor, Duration);
+		// PrintStringãƒãƒ¼ãƒ‰ã¨åŒã˜å‡¦ç†
+		// UKismetSystemLibraryã‚¯ãƒ©ã‚¹ã®PrintStringé–¢æ•°ã‚’å‘¼ã³å‡ºã™
+		UKismetSystemLibrary::PrintString(this, Message, true, true, TextColor, Duration, TEXT("None"));
 	}
 	else
 	{
-		// ŒvZŒ‹‰Ê‚ğo—Í‚·‚éˆ—
+		// è¨ˆç®—çµæœã‚’å‡ºåŠ›ã™ã‚‹å‡¦ç†
 		PrintCalcResult(CalcType, CalcVarA, CalcVarB, Duration);
 	}
 }
@@ -32,62 +32,89 @@ void ACPPEventDispatcher::PrintCalcResult(const ECPPCalcType Type, const int32 A
 {
 	switch (Type)
 	{
-		case ECPPCalcType::Add:
-		{
-			// Add(‘«‚µZ)‚Ìˆ—
-			// ’l“n‚µ
-			int32 ResultAdd = Sum(A, B);
-			FString StrResultAdd = FString::Printf(TEXT("%d"), ResultAdd);
-			UKismetSystemLibrary::PrintString(this, StrResultAdd, true, true, FColor::Red, PrintDuration);
-			break;
-		}
-		case ECPPCalcType::Subtract:
-		{
-			// Subtract(ˆø‚«Z)‚Ìˆ—
-			int32 ResultSubtract = A - B;
-			FString StrResultSubtract = FString::Printf(TEXT("%d"), ResultSubtract);
-			UKismetSystemLibrary::PrintString(this, StrResultSubtract, true, true, FColor::Yellow, PrintDuration);
-			break;
-		}
-		case ECPPCalcType::Multiply:
-		{
-			// Multiply(Š|‚¯Z)‚Ìˆ—
-			int32 ResultMultiply = A * B;
-			FString StrResultMultiply = FString::Printf(TEXT("%d"), ResultMultiply);
-			UKismetSystemLibrary::PrintString(this, StrResultMultiply, true, true, FColor::Green, PrintDuration);
-			break;
-		}
-		case ECPPCalcType::Divide:
-		{
-			// Divide(Š„‚èZ)‚Ìˆ—(int > float)
-			float ResultDivide = (float)A / (float)B;
-			FString StrResultDivide = FString::Printf(TEXT("%f"), ResultDivide);
-			UKismetSystemLibrary::PrintString(this, StrResultDivide, true, true, FColor::Blue, PrintDuration);
-			break;
-		}
+	case ECPPCalcType::Add:
+	{
+		// Add(è¶³ã—ç®—)ã®å‡¦ç†
+		int32 ResultAdd = Sum(CalcVarA, CalcVarB);
+		FString StrResultAdd = FString::Printf(TEXT("%d"), ResultAdd);
+		UKismetSystemLibrary::PrintString(
+			this
+			, StrResultAdd
+			, true
+			, true
+			, FColor::Red
+			, Duration
+			, TEXT("None"));
+		break;
+	}
+	case ECPPCalcType::Subtract:
+	{
+		// Subtract(å¼•ãç®—)ã®å‡¦ç†
+		int32 ResultSubtract = CalcVarA - CalcVarB;
+		FString StrResultSubtract = FString::Printf(TEXT("%d"), ResultSubtract);
+		UKismetSystemLibrary::PrintString(
+			this
+			, StrResultSubtract
+			, true
+			, true
+			, FColor::Yellow
+			, Duration
+			, TEXT("None"));
+		break;
+	}
+	case ECPPCalcType::Multiply:
+	{
+		// Multiply(æ›ã‘ç®—)ã®å‡¦ç†
+		int32 ResultMultiply = CalcVarA * CalcVarB;
+		FString StrResultMultiply = FString::Printf(TEXT("%d"), ResultMultiply);
+		UKismetSystemLibrary::PrintString(
+			this
+			, StrResultMultiply
+			, true
+			, true
+			, FColor::Green
+			, Duration
+			, TEXT("None"));
+		break;
+	}
+	case ECPPCalcType::Divide:
+	{
+		// Divide(å‰²ã‚Šç®—)ã®å‡¦ç†
+		float ResultDivide = (float)CalcVarA / (float)CalcVarB;
+		FString StrResultDivide = FString::Printf(TEXT("%f"), ResultDivide);
+		UKismetSystemLibrary::PrintString(
+			this
+			, StrResultDivide
+			, true
+			, true
+			, FColor::Blue
+			, Duration
+			, TEXT("None"));
+		break;
+	}
 	}
 }
 
 void ACPPEventDispatcher::SetupInput()
 {
-	// “ü—Í‚ğ—LŒø‚É‚·‚é
+	// å…¥åŠ›ã‚’æœ‰åŠ¹ã«ã™ã‚‹
 	EnableInput(UGameplayStatics::GetPlayerController(GetWorld(), 0));
 
-	// HƒL[‚ÌPressed‚ÆReleased‚ğƒoƒCƒ“ƒh‚·‚é
+	// Hã‚­ãƒ¼ã®Pressedã¨Releasedã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹
 	InputComponent->BindKey(EKeys::H, IE_Pressed, this, &ACPPEventDispatcher::PressedH);
 
-	// ActionMappings‚Éİ’è‚µ‚½Action‚ğƒoƒCƒ“ƒh‚·‚é
+	// ActionMappingsã«è¨­å®šã—ãŸActionã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹
 	InputComponent->BindAction("ActionPrintCalcResult", IE_Pressed, this, &ACPPEventDispatcher::PressedActionPrintCalcResult);
 }
 
 void ACPPEventDispatcher::PressedH()
 {
-	// Hello World!‚ğo—Í‚·‚éˆ—
-	UKismetSystemLibrary::PrintString(this, Message, true, true, TextColor, Duration);
+	// Hello World!ã‚’å‡ºåŠ›ã™ã‚‹å‡¦ç†
+	UKismetSystemLibrary::PrintString(this, Message, true, true, TextColor, Duration, TEXT("None"));
 }
 
 void ACPPEventDispatcher::PressedActionPrintCalcResult()
 {
-	// ŒvZŒ‹‰Ê‚ğo—Í‚·‚éˆ—
+	// è¨ˆç®—çµæœã‚’å‡ºåŠ›ã™ã‚‹å‡¦ç†
 	PrintCalcResult(CalcType, CalcVarA, CalcVarB, Duration);
 }

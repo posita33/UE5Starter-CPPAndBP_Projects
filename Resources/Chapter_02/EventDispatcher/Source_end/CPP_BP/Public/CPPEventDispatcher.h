@@ -13,15 +13,9 @@ class CPP_BP_API ACPPEventDispatcher : public AActor
 	GENERATED_BODY()
 
 public:
-	ACPPEventDispatcher();
-
-	// Custom Event[PrintHello] 
-	UFUNCTION()
-	void PrintHello();
-
 	int32 Sum(int32 A, int32 B);
 
-	// Action Mappings‚Éİ’è‚µ‚½Action‚ğˆ—‚·‚éŠÖ”
+	// Action Mappingsã«è¨­å®šã—ãŸActionã‚’å‡¦ç†ã™ã‚‹é–¢æ•°
 	void PressedActionPrintCalcResult();
 
 	// Event Dispatcher[OnPrintHello]
@@ -30,6 +24,12 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "CPP_BP")
 	FPrintHelloDelegate OnPrintHello;
 
+	ACPPEventDispatcher();
+
+	// Custom Event[PrintHello] 
+	UFUNCTION()
+	void PrintHello();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -37,27 +37,27 @@ protected:
 private:
 	FString Message = "C++ Hello World!";
 
-	// ŒvZŒ‹‰Ê‚ğo—Í‚·‚éŠÖ”
+	// è¨ˆç®—çµæœã‚’å‡ºåŠ›ã™ã‚‹é–¢æ•°
 	void PrintCalcResult(const ECPPCalcType Type, const int32 A, const int32 B, const float PrintDuration);
 
-	// PrintStringŠÖ”‚ÌDuration‚Éİ’è‚·‚é•Ï”
+	// PrintStringé–¢æ•°ã®Durationã«è¨­å®šã™ã‚‹å¤‰æ•°
 	const float Duration = 10.0f;
 
-	// PrintStringŠÖ”‚ÌTextColor‚Éİ’è‚·‚é•Ï”
+	// PrintStringé–¢æ•°ã®TextColorã«è¨­å®šã™ã‚‹å¤‰æ•°
 	const FLinearColor TextColor = FColor(255, 255, 255);
 
-	// ŒvZ—p‚Ì•Ï”
+	// è¨ˆç®—ç”¨ã®å¤‰æ•°
 	int32 CalcVarA = 7;
 	int32 CalcVarB = 3;
 
-	// Flow Control—p‚Ì•Ï”
+	// Flow Controlç”¨ã®å¤‰æ•°
 	bool IsPrintHello = false;
 	ECPPCalcType CalcType = ECPPCalcType::Add;
 
-	// Inputİ’è
+	// Inputè¨­å®š
 	void SetupInput();
 
-	// Input Event‚ğˆ—‚·‚éŠÖ”
+	// Input Eventã‚’å‡¦ç†ã™ã‚‹é–¢æ•°
 	void PressedH();
 
 };
