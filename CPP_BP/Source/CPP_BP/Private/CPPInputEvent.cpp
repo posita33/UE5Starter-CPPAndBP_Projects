@@ -3,6 +3,7 @@
 
 #include "CPPInputEvent.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Kismet/GameplayStatics.h" // ’Ç‰Á
 
 int32 ACPPInputEvent::Sum(int32 A, int32 B)
 {
@@ -14,15 +15,17 @@ void ACPPInputEvent::BeginPlay()
 {
 	Super::BeginPlay();
 
+	SetupInput();
+	
 	if (IsPrintHello)
 	{
-		// PrintStringãƒãƒ¼ãƒ‰ã¨åŒã˜å‡¦ç†
-		// UKismetSystemLibraryã‚¯ãƒ©ã‚¹ã®PrintStringé–¢æ•°ã‚’å‘¼ã³å‡ºã™
+		// PrintStringƒm[ƒh‚Æ“¯‚¶ˆ—
+		// UKismetSystemLibraryƒNƒ‰ƒX‚ÌPrintStringŠÖ”‚ğŒÄ‚Ño‚·
 		UKismetSystemLibrary::PrintString(this, Message, true, true, TextColor, Duration, TEXT("None"));
 	}
 	else
 	{
-		// è¨ˆç®—çµæœã‚’å‡ºåŠ›ã™ã‚‹å‡¦ç†
+		// ŒvZŒ‹‰Ê‚ğo—Í‚·‚éˆ—
 		PrintCalcResult(CalcType, CalcVarA, CalcVarB, Duration);
 	}
 }
@@ -33,7 +36,7 @@ void ACPPInputEvent::PrintCalcResult(const ECPPCalcType Type, const int32 A, con
 	{
 		case ECPPCalcType::Add:
 		{
-			// Add(è¶³ã—ç®—)ã®å‡¦ç†
+			// Add(‘«‚µZ)‚Ìˆ—
 			int32 ResultAdd = Sum(CalcVarA, CalcVarB);
 			FString StrResultAdd = FString::Printf(TEXT("%d"), ResultAdd);
 			UKismetSystemLibrary::PrintString(
@@ -48,7 +51,7 @@ void ACPPInputEvent::PrintCalcResult(const ECPPCalcType Type, const int32 A, con
 		}
 		case ECPPCalcType::Subtract:
 		{
-			// Subtract(å¼•ãç®—)ã®å‡¦ç†
+			// Subtract(ˆø‚«Z)‚Ìˆ—
 			int32 ResultSubtract = CalcVarA - CalcVarB;
 			FString StrResultSubtract = FString::Printf(TEXT("%d"), ResultSubtract);
 			UKismetSystemLibrary::PrintString(
@@ -63,7 +66,7 @@ void ACPPInputEvent::PrintCalcResult(const ECPPCalcType Type, const int32 A, con
 		}
 		case ECPPCalcType::Multiply:
 		{
-			// Multiply(æ›ã‘ç®—)ã®å‡¦ç†
+			// Multiply(Š|‚¯Z)‚Ìˆ—
 			int32 ResultMultiply = CalcVarA * CalcVarB;
 			FString StrResultMultiply = FString::Printf(TEXT("%d"), ResultMultiply);
 			UKismetSystemLibrary::PrintString(
@@ -78,7 +81,7 @@ void ACPPInputEvent::PrintCalcResult(const ECPPCalcType Type, const int32 A, con
 		}
 		case ECPPCalcType::Divide:
 		{
-			// Divide(å‰²ã‚Šç®—)ã®å‡¦ç†
+			// Divide(Š„‚èZ)‚Ìˆ—
 			float ResultDivide = (float)CalcVarA / (float)CalcVarB;
 			FString StrResultDivide = FString::Printf(TEXT("%f"), ResultDivide);
 			UKismetSystemLibrary::PrintString(
@@ -92,4 +95,35 @@ void ACPPInputEvent::PrintCalcResult(const ECPPCalcType Type, const int32 A, con
 			break;
 		}
 	}
+}
+
+void ACPPInputEvent::SetupInput()
+{
+	// “ü—Í‚ğ—LŒø‚É‚·‚é
+	EnableInput(UGameplayStatics::GetPlayerController(GetWorld(), 0));
+
+	// HƒL[‚ÌPressed‚ÆReleased‚ğƒoƒCƒ“ƒh‚·‚é
+	InputComponent->BindKey(EKeys::H, IE_Pressed, this, &ACPPInputEvent::PressedH);
+	//InputComponent->BindKey(EKeys::H, IE_Released, this, &ACPPInputEvent::ReleasedH);
+
+	// ActionMappings‚Éİ’è‚µ‚½Action‚ğƒoƒCƒ“ƒh‚·‚é
+	InputComponent->BindAction("ActionPrintCalcResult", IE_Pressed, this, &ACPPInputEvent::PressedActionPrintCalcResult);
+}
+
+void ACPPInputEvent::PressedActionPrintCalcResult()
+{
+	// ŒvZŒ‹‰Ê‚ğo—Í‚·‚éˆ—
+	PrintCalcResult(CalcType, CalcVarA, CalcVarB, Duration);
+}
+
+void ACPPInputEvent::PressedH()
+{
+	// Hello World!‚ğo—Í‚·‚éˆ—
+	UKismetSystemLibrary::PrintString(this, Message, true, true, TextColor, Duration, TEXT("None"));
+}
+
+void ACPPInputEvent::ReleasedH()
+{
+	// ŒvZŒ‹‰Ê‚ğo—Í‚·‚éˆ—
+	PrintCalcResult(CalcType, CalcVarA, CalcVarB, Duration);
 }

@@ -11,7 +11,7 @@ UCLASS()
 class CPP_BP_API ACPPInputEvent : public AActor
 {
 	GENERATED_BODY()
-
+	
 public:
 	int32 Sum(int32 A, int32 B);
 
@@ -22,27 +22,27 @@ protected:
 private:
 	FString Message = "C++ Hello World!";
 
-	// ŒvZŒ‹‰Ê‚ğo—Í‚·‚éŠÖ”
+	// è¨ˆç®—çµæœã‚’å‡ºåŠ›ã™ã‚‹é–¢æ•°
 	void PrintCalcResult(const ECPPCalcType Type, const int32 A, const int32 B, const float PrintDuration);
 
-	// PrintStringŠÖ”‚ÌDuration‚Éİ’è‚·‚é•Ï”
+	// PrintStringé–¢æ•°ã®Durationã«è¨­å®šã™ã‚‹å¤‰æ•°
 	const float Duration = 10.0f;
 
-	// PrintStringŠÖ”‚ÌTextColor‚Éİ’è‚·‚é•Ï”
+	// PrintStringé–¢æ•°ã®TextColorã«è¨­å®šã™ã‚‹å¤‰æ•°
 	const FLinearColor TextColor = FColor(255, 255, 255);
 
-	// ŒvZ—p‚Ì•Ï”
+	// è¨ˆç®—ç”¨ã®å¤‰æ•°
 	int32 CalcVarA = 7;
 	int32 CalcVarB = 3;
 
-	// Flow Control—p‚Ì•Ï”
+	// Flow Controlç”¨ã®å¤‰æ•°
 	bool IsPrintHello = false;
 	ECPPCalcType CalcType = ECPPCalcType::Add;
 
-	// Inputİ’è
+	// Inputè¨­å®š
 	void SetupInput();
 
-	// Input Event ƒCƒxƒ“ƒgƒnƒ“ƒhƒ‰[ŠÖ”
+	// Input Event ã‚¤ãƒ™ãƒ³ãƒˆãƒãƒ³ãƒ‰ãƒ©ãƒ¼é–¢æ•°
 	void PressedH();
 	void ReleasedH();
 
