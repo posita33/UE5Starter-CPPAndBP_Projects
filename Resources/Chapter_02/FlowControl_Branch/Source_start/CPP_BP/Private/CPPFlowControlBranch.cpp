@@ -3,7 +3,6 @@
 
 #include "CPPFlowControlBranch.h"
 #include "Kismet/KismetSystemLibrary.h"
-#include "Kismet/KismetMathLibrary.h" // 追加
 
 // Called when the game starts or when spawned
 void ACPPFlowControlBranch::BeginPlay()
@@ -25,7 +24,7 @@ void ACPPFlowControlBranch::BeginPlay()
 		, TEXT("None"));
 
 	// Add(足し算)の処理
-	int32 ResultAdd = UKismetMathLibrary::Add_IntInt(CalcVarA, CalcVarB);
+	int32 ResultAdd =  CalcVarA + CalcVarB;
 	FString StrResultAdd = FString::Printf(TEXT("%d"), ResultAdd);
 	UKismetSystemLibrary::PrintString(
 		this

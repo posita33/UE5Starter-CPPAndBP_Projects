@@ -1,37 +1,27 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "CPPFlowControlBranch.h"
+#include "CPPFunction.h"
 #include "Kismet/KismetSystemLibrary.h"
-#include "Kismet/KismetMathLibrary.h" // è¿½åŠ 
 
-// Called when the game starts or when spawned
-void ACPPFlowControlBranch::BeginPlay()
+int32 ACPPFunction::Sum(int32 A, int32 B)
 {
-	Super::BeginPlay();
+	return A + B;
+}
 
-	// å¤‰æ•°ã‚’ä½œæˆã™ã‚‹
-	FString Message = "C++ Hello World!";
+int32 ACPPFunction::SumRef(int32& A, int32& B)
+{
+	return A + B;
+}
 
-	if (IsPrintHello)
+void ACPPFunction::PrintCalcResult(const ECPPCalcType Type, const int32 A, const int32 B, const float PrintDuration)
+{
+	switch (Type)
 	{
-		// PrintStringãƒãƒ¼ãƒ‰ã¨åŒã˜å‡¦ç†
-		// UKismetSystemLibraryã‚¯ãƒ©ã‚¹ã®PrintStringé–¢æ•°ã‚’å‘¼ã³å‡ºã™
-		UKismetSystemLibrary::PrintString(
-			this
-			, Message
-			, true
-			, true
-			, TextColor// Textã®ã‚«ãƒ©ãƒ¼æƒ…å ±ã«å¤‰æ•°TextColorã‚’è¨­å®š
-			, Duration
-			, TEXT("None"));
-	}
-	else
-	{
-		if (CalcType == 0)
+		case ECPPCalcType::Add:
 		{
-			// Add(è¶³ã—ç®—)ã®å‡¦ç†
-			int32 ResultAdd = CalcVarA + CalcVarB;
+			// Add(‘«‚µZ)‚Ìˆ—
+			int32 ResultAdd = Sum(CalcVarA, CalcVarB);
 			FString StrResultAdd = FString::Printf(TEXT("%d"), ResultAdd);
 			UKismetSystemLibrary::PrintString(
 				this
@@ -41,10 +31,11 @@ void ACPPFlowControlBranch::BeginPlay()
 				, FColor::Red
 				, Duration
 				, TEXT("None"));
+			break;
 		}
-		else if (CalcType == 1)
+		case ECPPCalcType::Subtract:
 		{
-			// Subtract(å¼•ãç®—)ã®å‡¦ç†
+			// Subtract(ˆø‚«Z)‚Ìˆ—
 			int32 ResultSubtract = CalcVarA - CalcVarB;
 			FString StrResultSubtract = FString::Printf(TEXT("%d"), ResultSubtract);
 			UKismetSystemLibrary::PrintString(
@@ -55,10 +46,11 @@ void ACPPFlowControlBranch::BeginPlay()
 				, FColor::Yellow
 				, Duration
 				, TEXT("None"));
+			break;
 		}
-		else if (CalcType == 2)
+		case ECPPCalcType::Multiply:
 		{
-			// Multiply(æ›ã‘ç®—)ã®å‡¦ç†
+			// Multiply(Š|‚¯Z)‚Ìˆ—
 			int32 ResultMultiply = CalcVarA * CalcVarB;
 			FString StrResultMultiply = FString::Printf(TEXT("%d"), ResultMultiply);
 			UKismetSystemLibrary::PrintString(
@@ -69,10 +61,11 @@ void ACPPFlowControlBranch::BeginPlay()
 				, FColor::Green
 				, Duration
 				, TEXT("None"));
+			break;
 		}
-		else
+		case ECPPCalcType::Divide:
 		{
-			// Divide(å‰²ã‚Šç®—)ã®å‡¦ç†
+			// Divide(Š„‚èZ)‚Ìˆ—
 			float ResultDivide = (float)CalcVarA / (float)CalcVarB;
 			FString StrResultDivide = FString::Printf(TEXT("%f"), ResultDivide);
 			UKismetSystemLibrary::PrintString(
@@ -83,7 +76,28 @@ void ACPPFlowControlBranch::BeginPlay()
 				, FColor::Blue
 				, Duration
 				, TEXT("None"));
+			break;
 		}
 	}
 }
 
+// Called when the game starts or when spawned
+void ACPPFunction::BeginPlay()
+{
+	Super::BeginPlay();
+
+	// •Ï”‚ğì¬‚·‚é
+	FString Message = "C++ Hello World!";
+
+	if (IsPrintHello)
+	{
+		// PrintStringƒm[ƒh‚Æ“¯‚¶ˆ—
+		// UKismetSystemLibraryƒNƒ‰ƒX‚ÌPrintStringŠÖ”‚ğŒÄ‚Ño‚·
+		UKismetSystemLibrary::PrintString(this, Message, true, true, TextColor, Duration, TEXT("None"));
+	}
+	else
+	{
+		// ŒvZŒ‹‰Ê‚ğo—Í‚·‚éˆ—
+		PrintCalcResult(CalcType, CalcVarA, CalcVarB, Duration);
+	}
+}

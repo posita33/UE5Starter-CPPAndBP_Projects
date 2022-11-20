@@ -7,12 +7,15 @@
 // Called when the game starts or when spawned
 void ACPPFunction::BeginPlay()
 {
+	Super::BeginPlay();
+
+	// å¤‰æ•°ã‚’ä½œæˆã™ã‚‹
 	FString Message = "C++ Hello World!";
 
 	if (IsPrintHello)
 	{
-		// PrintStringƒm[ƒh‚Æ“¯‚¶ˆ—
-		// UKismetSystemLibraryƒNƒ‰ƒX‚ÌPrintStringŠÖ”‚ğŒÄ‚Ño‚·
+		// PrintStringãƒãƒ¼ãƒ‰ã¨åŒã˜å‡¦ç†
+		// UKismetSystemLibraryã‚¯ãƒ©ã‚¹ã®PrintStringé–¢æ•°ã‚’å‘¼ã³å‡ºã™
 		UKismetSystemLibrary::PrintString(this, Message, true, true, TextColor, Duration);
 	}
 	else
@@ -21,34 +24,62 @@ void ACPPFunction::BeginPlay()
 		{
 			case ECPPCalcType::Add:
 			{
-				// Add(‘«‚µZ)‚Ìˆ—
+				// Add(è¶³ã—ç®—)ã®å‡¦ç†
 				int32 ResultAdd = CalcVarA + CalcVarB;
 				FString StrResultAdd = FString::Printf(TEXT("%d"), ResultAdd);
-				UKismetSystemLibrary::PrintString(this, StrResultAdd, true, true, FColor::Red, Duration);
+				UKismetSystemLibrary::PrintString(
+					this
+					, StrResultAdd
+					, true
+					, true
+					, FColor::Red
+					, Duration
+					, TEXT("None"));
 				break;
 			}
 			case ECPPCalcType::Subtract:
 			{
-				// Subtract(ˆø‚«Z)‚Ìˆ—
+				// Subtract(å¼•ãç®—)ã®å‡¦ç†
 				int32 ResultSubtract = CalcVarA - CalcVarB;
 				FString StrResultSubtract = FString::Printf(TEXT("%d"), ResultSubtract);
-				UKismetSystemLibrary::PrintString(this, StrResultSubtract, true, true, FColor::Yellow, Duration);
+				UKismetSystemLibrary::PrintString(
+					this
+					, StrResultSubtract
+					, true
+					, true
+					, FColor::Yellow
+					, Duration
+					, TEXT("None"));
 				break;
 			}
 			case ECPPCalcType::Multiply:
 			{
-				// Multiply(Š|‚¯Z)‚Ìˆ—
+				// Multiply(æ›ã‘ç®—)ã®å‡¦ç†
 				int32 ResultMultiply = CalcVarA * CalcVarB;
 				FString StrResultMultiply = FString::Printf(TEXT("%d"), ResultMultiply);
-				UKismetSystemLibrary::PrintString(this, StrResultMultiply, true, true, FColor::Green, Duration);
+				UKismetSystemLibrary::PrintString(
+					this
+					, StrResultMultiply
+					, true
+					, true
+					, FColor::Green
+					, Duration
+					, TEXT("None"));
 				break;
 			}
 			case ECPPCalcType::Divide:
 			{
-				// Divide(Š„‚èZ)‚Ìˆ—(int > float)
+				// Divide(å‰²ã‚Šç®—)ã®å‡¦ç†
 				float ResultDivide = (float)CalcVarA / (float)CalcVarB;
 				FString StrResultDivide = FString::Printf(TEXT("%f"), ResultDivide);
-				UKismetSystemLibrary::PrintString(this, StrResultDivide, true, true, FColor::Blue, Duration);
+				UKismetSystemLibrary::PrintString(
+					this
+					, StrResultDivide
+					, true
+					, true
+					, FColor::Blue
+					, Duration
+					, TEXT("None"));
 				break;
 			}
 		}
