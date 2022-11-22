@@ -19,11 +19,11 @@ public:
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FPrintHelloDelegate);
 
 	UPROPERTY(BlueprintAssignable, Category = "CPP_BP")
-		FPrintHelloDelegate OnPrintHello;
+	FPrintHelloDelegate OnPrintHello;
 
 	// Custom Event[PrintHello] 
 	UFUNCTION()
-		void PrintHello();
+	void PrintHello();
 
 	int32 Sum(int32 A, int32 B);
 

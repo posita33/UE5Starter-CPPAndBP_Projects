@@ -7,7 +7,7 @@
 
 ACPPFlowControlLoop::ACPPFlowControlLoop()
 {
-	// Event Dispathcer[OnPrintHello]ã«Custom Event[PrintHello]ã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹
+	// Event Dispathcer[OnPrintHello]‚ÉCustom Event[PrintHello]‚ğƒoƒCƒ“ƒh‚·‚é
 	OnPrintHello.AddDynamic(this, &ACPPFlowControlLoop::PrintHello);
 }
 
@@ -25,12 +25,12 @@ void ACPPFlowControlLoop::BeginPlay()
 
 	if (IsPrintHello)
 	{
-		// Hello World!ã‚’å‡ºåŠ›ã™ã‚‹å‡¦ç†
+		// Hello World!‚ğo—Í‚·‚éˆ—
 		PrintHello();
 	}
 	else
 	{
-		// è¨ˆç®—çµæœã‚’å‡ºåŠ›ã™ã‚‹å‡¦ç†
+		// ŒvZŒ‹‰Ê‚ğo—Í‚·‚éˆ—
 		PressedActionPrintCalcResult();
 	}
 }
@@ -41,7 +41,7 @@ void ACPPFlowControlLoop::PrintCalcResult(const ECPPCalcType Type, const int32 A
 	{
 		case ECPPCalcType::Add:
 		{
-			// Add(è¶³ã—ç®—)ã®å‡¦ç†
+			// Add(‘«‚µZ)‚Ìˆ—
 			int32 ResultAdd = Sum(CalcVarA, CalcVarB);
 			FString StrResultAdd = FString::Printf(TEXT("%d"), ResultAdd);
 			UKismetSystemLibrary::PrintString(
@@ -56,7 +56,7 @@ void ACPPFlowControlLoop::PrintCalcResult(const ECPPCalcType Type, const int32 A
 		}
 		case ECPPCalcType::Subtract:
 		{
-			// Subtract(å¼•ãç®—)ã®å‡¦ç†
+			// Subtract(ˆø‚«Z)‚Ìˆ—
 			int32 ResultSubtract = CalcVarA - CalcVarB;
 			FString StrResultSubtract = FString::Printf(TEXT("%d"), ResultSubtract);
 			UKismetSystemLibrary::PrintString(
@@ -71,7 +71,7 @@ void ACPPFlowControlLoop::PrintCalcResult(const ECPPCalcType Type, const int32 A
 		}
 		case ECPPCalcType::Multiply:
 		{
-			// Multiply(æ›ã‘ç®—)ã®å‡¦ç†
+			// Multiply(Š|‚¯Z)‚Ìˆ—
 			int32 ResultMultiply = CalcVarA * CalcVarB;
 			FString StrResultMultiply = FString::Printf(TEXT("%d"), ResultMultiply);
 			UKismetSystemLibrary::PrintString(
@@ -86,7 +86,7 @@ void ACPPFlowControlLoop::PrintCalcResult(const ECPPCalcType Type, const int32 A
 		}
 		case ECPPCalcType::Divide:
 		{
-			// Divide(å‰²ã‚Šç®—)ã®å‡¦ç†
+			// Divide(Š„‚èZ)‚Ìˆ—
 			float ResultDivide = (float)CalcVarA / (float)CalcVarB;
 			FString StrResultDivide = FString::Printf(TEXT("%f"), ResultDivide);
 			UKismetSystemLibrary::PrintString(
@@ -104,25 +104,25 @@ void ACPPFlowControlLoop::PrintCalcResult(const ECPPCalcType Type, const int32 A
 
 void ACPPFlowControlLoop::SetupInput()
 {
-	// å…¥åŠ›ã‚’æœ‰åŠ¹ã«ã™ã‚‹
+	// “ü—Í‚ğ—LŒø‚É‚·‚é
 	EnableInput(UGameplayStatics::GetPlayerController(GetWorld(), 0));
 
-	// Hã‚­ãƒ¼ã®Pressedã¨Releasedã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹
+	// HƒL[‚ÌPressed‚ÆReleased‚ğƒoƒCƒ“ƒh‚·‚é
 	InputComponent->BindKey(EKeys::H, IE_Pressed, this, &ACPPFlowControlLoop::PressedH);
 
-	// ActionMappingsã«è¨­å®šã—ãŸActionã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹
+	// ActionMappings‚Éİ’è‚µ‚½Action‚ğƒoƒCƒ“ƒh‚·‚é
 	InputComponent->BindAction("ActionPrintCalcResult", IE_Pressed, this, &ACPPFlowControlLoop::PressedActionPrintCalcResult);
 }
 
 void ACPPFlowControlLoop::PressedH()
 {
-	// Event Dispathcer[OnPrintHello]ã‚’ã‚³ãƒ¼ãƒ«ã™ã‚‹
+	// Event Dispathcer[OnPrintHello]‚ğƒR[ƒ‹‚·‚é
 	OnPrintHello.Broadcast();
 }
 
 void ACPPFlowControlLoop::PressedActionPrintCalcResult()
 {
-	// è¨ˆç®—çµæœã‚’å‡ºåŠ›ã™ã‚‹å‡¦ç†
+	// ŒvZŒ‹‰Ê‚ğo—Í‚·‚éˆ—
 	PrintCalcResult(CalcTypes[TypeIndex], CalcVarA, CalcVarB, Duration);
 
 	TypeIndex++;
@@ -136,21 +136,21 @@ void ACPPFlowControlLoop::PrintHello()
 
 	while (NotBonjour)
 	{
-		// æ–‡å­—åˆ—ã«"Bonjour"ãŒå«ã¾ã‚Œã¦ã„ã‚‹ã‹
+		// •¶š—ñ‚É"Bonjour"‚ªŠÜ‚Ü‚ê‚Ä‚¢‚é‚©
 		if (Messages[HelloIndex].Contains(TEXT("Bonjour")))
 		{
-			// While Loopã®æ¡ä»¶ã‚’falseã«è¨­å®šã™ã‚‹
+			// While Loop‚ÌğŒ‚ğfalse‚Éİ’è‚·‚é
 			NotBonjour = false;
 		}
 		else
 		{
-			// Messagesã®å€¤ã‚’å‡ºåŠ›ã™ã‚‹
+			// Messages‚Ì’l‚ğo—Í‚·‚é
 			UKismetSystemLibrary::PrintString(this, Messages[HelloIndex], true, true, TextColor, Duration, TEXT("None"));
 		}
-		// HelloIndexã‚’ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ãƒˆ
+		// HelloIndex‚ğƒCƒ“ƒNƒŠƒƒ“ƒg
 		HelloIndex++;
 	}
 
-	// Completedã‚’PrintStringã§å‡ºåŠ›ã™ã‚‹
+	// Completed‚ğPrintString‚Åo—Í‚·‚é
 	UKismetSystemLibrary::PrintString(this, TEXT("Completed"), true, true, FColor::Cyan, Duration, TEXT("None"));
 }
