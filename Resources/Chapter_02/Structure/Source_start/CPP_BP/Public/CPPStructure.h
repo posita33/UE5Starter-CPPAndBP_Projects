@@ -11,7 +11,7 @@ UCLASS()
 class CPP_BP_API ACPPStructure : public AActor
 {
 	GENERATED_BODY()
-
+	
 public:
 	ACPPStructure();
 
