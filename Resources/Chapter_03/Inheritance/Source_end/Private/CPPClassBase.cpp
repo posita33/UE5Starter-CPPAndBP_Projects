@@ -27,22 +27,16 @@ ACPPClassBase::ACPPClassBase()
 // Called when the game starts or when spawned
 void ACPPClassBase::BeginPlay()
 {
-	// 親クラスのデータメンバを変更する
-	//VarChildNum = 1000;
+	Super::BeginPlay();
 
-	// 自分のメンバ関数を呼び出す
 	CallParentFunc();
-
-	// 派生クラスが持っているメンバ関数を呼び出す
-	//CallChildFunc();
 }
 
 void ACPPClassBase::CallParentFunc()
 {
-    // Viewportに配置したActorの表示名を取得する
+	// Viewportに配置したActorの表示名を取得する
 	FString name = UKismetSystemLibrary::GetDisplayName(this);
-	
-	// PrintStringでActor表示名,メンバ関数,データメンバを出力
-	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("%s : CallParentFunc %d"), *name, VarParentNum), true, true, FColor::Cyan, 10.f);
-}
 
+	// PrintStringでActor表示名,メンバ関数,データメンバを出力
+	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("%s : CallParentFunc %d"), *name, VarParentNum), true, true, FColor::Cyan, 10.f, TEXT("None"));
+}

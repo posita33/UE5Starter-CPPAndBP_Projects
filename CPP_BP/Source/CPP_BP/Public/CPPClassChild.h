@@ -14,16 +14,16 @@ class CPP_BP_API ACPPClassChild : public ACPPClassBase
 {
 	GENERATED_BODY()
 
-public:
+	public:
 	ACPPClassChild();
 	
 protected:
 	virtual void BeginPlay() override;
 
 public:
-	// å­ã‚¯ãƒ©ã‚¹ã®ãƒ¡ãƒ³ãƒé–¢æ•° 
+	// qƒNƒ‰ƒX‚Ìƒƒ“ƒoŠÖ” 
 	void CallChildFunc();
 
-	// å­ã‚¯ãƒ©ã‚¹ã®ãƒ‡ãƒ¼ã‚¿ãƒ¡ãƒ³ãƒ
+	// qƒNƒ‰ƒX‚Ìƒf[ƒ^ƒƒ“ƒo
 	int VarChildNum = 100;
 };

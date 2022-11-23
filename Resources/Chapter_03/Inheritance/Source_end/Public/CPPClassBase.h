@@ -11,7 +11,7 @@ class CPP_BP_API ACPPClassBase : public AActor
 {
 	GENERATED_BODY()
 	
-public:	
+public:
 	// Sets default values for this actor's properties
 	ACPPClassBase();
 
@@ -22,11 +22,11 @@ protected:
 public:
 	// Scene Component
 	UPROPERTY(EditAnywhere)
-	USceneComponent* DefaultSceneRoot;
+	TObjectPtr<USceneComponent> DefaultSceneRoot;
 
 	// StaticMesh Component
 	UPROPERTY(EditAnywhere)
-	UStaticMeshComponent* StaticMesh;
+	TObjectPtr<UStaticMeshComponent> StaticMesh;
 
 	// 親クラスのメンバ関数 
 	void CallParentFunc();
