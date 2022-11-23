@@ -3,17 +3,17 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "CPPParentRedefinition.h"
-#include "CPPChildRedefinition.generated.h"
+#include "CPPParentVirtual.h"
+#include "CPPChildVirtual.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
-class CPP_BP_API ACPPChildRedefinition : public ACPPParentRedefinition
+class CPP_BP_API ACPPChildVirtual : public ACPPParentVirtual
 {
 	GENERATED_BODY()
-	
+
 public:
 	void SetPoint(int myPoint);
 

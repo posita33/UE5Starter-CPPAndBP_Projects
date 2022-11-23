@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "CPPRedefinitionTest.generated.h"
+#include "CPPVirtualTest.generated.h"
 
 UCLASS()
-class CPP_BP_API ACPPRedefinitionTest : public AActor
+class CPP_BP_API ACPPVirtualTest : public AActor
 {
 	GENERATED_BODY()
-	
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

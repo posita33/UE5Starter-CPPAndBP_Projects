@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "CPPParentRedefinition.generated.h"
+#include "CPPParentVirtual.generated.h"
 
 UCLASS()
-class CPP_BP_API ACPPParentRedefinition : public AActor
+class CPP_BP_API ACPPParentVirtual : public AActor
 {
 	GENERATED_BODY()
-	
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -19,7 +19,7 @@ protected:
 
 public:
 	// PointのSetterとGetter
-	void SetPoint(int myPoint);
+	virtual void SetPoint(int myPoint);
 	int GetPoint();
 
 };
