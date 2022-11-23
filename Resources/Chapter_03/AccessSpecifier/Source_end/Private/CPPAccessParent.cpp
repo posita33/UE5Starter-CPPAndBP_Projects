@@ -25,7 +25,7 @@ void ACPPAccessParent::CallPublicFunc()
 	FString name = UKismetSystemLibrary::GetDisplayName(this);
 
 	// PrintStringでActor表示名,メンバ関数,データメンバを出力
-	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("%s : CallPublicFunc %d"), *name, VarPublicNum), true, true, FColor::Cyan, 10.f);
+	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("%s : CallPublicFunc %d"), *name, VarPublicNum), true, true, FColor::Cyan, 10.f, TEXT("None"));
 }
 
 void ACPPAccessParent::CallProtectedFunc()
@@ -34,7 +34,7 @@ void ACPPAccessParent::CallProtectedFunc()
 	FString name = UKismetSystemLibrary::GetDisplayName(this);
 
 	// PrintStringでActor表示名,メンバ関数,データメンバを出力
-	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("%s : CallProtectedFunc %d"), *name, VarProtectedNum), true, true, FColor::Cyan, 10.f);
+	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("%s : CallProtectedFunc %d"), *name, VarProtectedNum), true, true, FColor::Cyan, 10.f, TEXT("None"));
 }
 
 void ACPPAccessParent::CallPrivateFunc()
@@ -43,6 +43,6 @@ void ACPPAccessParent::CallPrivateFunc()
 	FString name = UKismetSystemLibrary::GetDisplayName(this);
 
 	// PrintStringでActor表示名,メンバ関数,データメンバを出力
-	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("%s : CallPrivateFunc %d"), *name, VarPrivateNum), true, true, FColor::Cyan, 10.f);
+	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("%s : CallPrivateFunc %d"), *name, VarPrivateNum), true, true, FColor::Cyan, 10.f, TEXT("None"));
 }
 
