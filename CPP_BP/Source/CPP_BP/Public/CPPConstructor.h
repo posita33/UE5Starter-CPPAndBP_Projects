@@ -11,7 +11,7 @@ class CPP_BP_API ACPPConstructor : public AActor
 {
 	GENERATED_BODY()
 	
-public:	
+public:
 	// Sets default values for this actor's properties
 	ACPPConstructor();
 
@@ -27,15 +27,16 @@ protected:
 public:
 	// Scene Component
 	UPROPERTY(EditAnywhere)
-	USceneComponent* DefaultSceneRoot;
+	TObjectPtr<USceneComponent> DefaultSceneRoot;
 
 	// StaticMesh Component
 	UPROPERTY(EditAnywhere)
-	UStaticMeshComponent* StaticMesh;
+	TObjectPtr<UStaticMeshComponent> StaticMesh;
 
 private:
 
-    // HP
-    int hp = 0;
+	// HP
+	int hp = 0;
 
 };
+
