@@ -12,12 +12,12 @@ class CPP_BP_API ACPPStatic : public AActor
 	GENERATED_BODY()
 
 public:
-	// staticãƒ¡ãƒ³ãƒé–¢æ•°
+	// staticƒƒ“ƒoŠÖ”
 	static void SetPoint(int myPoint);
 
-	// staticãƒ¡ãƒ³ãƒå¤‰æ•°
+	// staticƒƒ“ƒo•Ï”
 	static int staticPoint;
 
-	// é€šå¸¸ã®ãƒ¡ãƒ³ãƒå¤‰æ•°
+	// ’Êí‚Ìƒƒ“ƒo•Ï”
 	int normalPoint;
 };

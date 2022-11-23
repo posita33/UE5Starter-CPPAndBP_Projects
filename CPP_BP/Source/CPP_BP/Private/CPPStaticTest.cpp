@@ -12,17 +12,17 @@ void ACPPStaticTest::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// CPPStaticã‚’ç”Ÿæˆã™ã‚‹
+	// CPPStatic‚ð¶¬‚·‚é
 	ACPPStatic* staticActorA = GetWorld()->SpawnActor<ACPPStatic>(ACPPStatic::StaticClass());
-	// ãƒ¡ãƒ³ãƒå¤‰æ•°ã‚’è¨­å®šã™ã‚‹
+	// ƒƒ“ƒo•Ï”‚ðÝ’è‚·‚é
 	staticActorA->normalPoint = 100;
 
-	// CPPStaticã‚’ç”Ÿæˆã™ã‚‹
+	// CPPStatic‚ð¶¬‚·‚é
 	ACPPStatic* staticActorB = GetWorld()->SpawnActor<ACPPStatic>(ACPPStatic::StaticClass());
-	// ãƒ¡ãƒ³ãƒå¤‰æ•°ã‚’è¨­å®šã™ã‚‹
+	// ƒƒ“ƒo•Ï”‚ðÝ’è‚·‚é
 	staticActorB->normalPoint = 200;
 
-	// é™çš„ãƒ¡ãƒ³ãƒé–¢æ•°ã‚’å‘¼ã³å‡ºã™
+	// Ã“Iƒƒ“ƒoŠÖ”‚ðŒÄ‚Ño‚·
 	ACPPStatic::SetPoint(500);
 	staticActorA->SetPoint(600);
 
