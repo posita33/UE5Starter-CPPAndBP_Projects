@@ -7,7 +7,7 @@
 #include "CPPBPInterface.generated.h"
 
 // This class does not need to be modified.
-UINTERFACE(MinimalAPI, Blueprintable)
+UINTERFACE(MinimalAPI)
 class UCPPBPInterface : public UInterface
 {
 	GENERATED_BODY()
@@ -23,11 +23,11 @@ class CPP_BP_API ICPPBPInterface
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 
-	// 引数と戻り値がないメンバ関数
+	// 蠑墓焚縺ｨ謌ｻ繧雁､縺後↑縺�繝｡繝ｳ繝宣未謨ｰ
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "InterfaceTest")
 	void PrintHello();
 
-	// 引数と戻り値があるメンバ関数
+	// 蠑墓焚縺ｨ謌ｻ繧雁､縺後≠繧九Γ繝ｳ繝宣未謨ｰ
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "InterfaceTest")
 	int Add(int A, int B);
 };

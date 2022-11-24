@@ -8,10 +8,10 @@
 
 void ICPPInterface::PrintHello()
 {
-	UKismetSystemLibrary::PrintString(NULL, FString::Printf(TEXT("Hello")), true, true, FColor::Cyan, 10.f);
+	UKismetSystemLibrary::PrintString(NULL, FString::Printf(TEXT("Hello")), true, true, FColor::Cyan, 10.f, TEXT("None"));
 }
 
 int ICPPInterface::Add(int A, int B)
 {
-	return A+B;
+	return A + B;
 }
