@@ -6,5 +6,5 @@
 
 void ACPPAbstractBPChild::Greeting_Implementation()
 {
-	UKismetSystemLibrary::PrintString(this, GreetingMessage, true, true, FColor::Cyan, 10.f);
+	UKismetSystemLibrary::PrintString(this, GreetingMessage, true, true, FColor::Cyan, 10.f, TEXT("None"));
 }
