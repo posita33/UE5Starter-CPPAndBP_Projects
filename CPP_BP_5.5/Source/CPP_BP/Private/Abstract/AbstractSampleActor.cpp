@@ -9,10 +9,6 @@ AAbstractSampleActor::AAbstractSampleActor()
 
 }
 
-void AAbstractSampleActor::FuncOverridableProto_Implementation()
-{
-}
-
 void AAbstractSampleActor::FuncOverridable_Implementation()
 {
 	// Blueprintで上書き可能
@@ -26,4 +22,14 @@ int32 AAbstractSampleActor::FuncOverridableWithArg_Implementation(int32 Value)
 	// 処理の実装は任意
 	UE_LOG(LogTemp, Display, TEXT("FuncOverridableWithArg : %d"), Value);
 	return Value;
+}
+
+void AAbstractSampleActor::FuncNonOverridableBP()
+{
+	UE_LOG(LogTemp, Log, TEXT("これはC++のみオーバーライドできる関数です。"));	
+}
+
+void AAbstractSampleActor::FuncNonOverridableBoth()
+{
+	UE_LOG(LogTemp, Log, TEXT("これはオーバーライド禁止のfinal関数です。"));
 }

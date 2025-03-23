@@ -59,4 +59,17 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Abstract Sample")
 	int32 FuncOverridableWithArg(int32 Value);
 	virtual int32 FuncOverridableWithArg_Implementation(int32 Value);
+	
+	// 上書き
+	// Blueprint : x
+	// C++       : o
+	UFUNCTION(BlueprintCallable, Category = "Abstract Sample")
+    virtual void FuncNonOverridableBP();
+
+	// 上書き
+	// Blueprint : x
+	// C++       : o
+	UFUNCTION(BlueprintCallable, Category = "Abstract Sample")
+    virtual void FuncNonOverridableBoth() final;
+    
 };
