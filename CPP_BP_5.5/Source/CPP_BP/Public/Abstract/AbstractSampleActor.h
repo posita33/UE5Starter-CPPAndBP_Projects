@@ -64,12 +64,12 @@ public:
 	// Blueprint : x
 	// C++       : o
 	UFUNCTION(BlueprintCallable, Category = "Abstract Sample")
-    virtual void FuncNonOverridableBP();
+	virtual void FuncNonOverridableBP();
 
 	// 上書き
 	// Blueprint : x
 	// C++       : o
 	UFUNCTION(BlueprintCallable, Category = "Abstract Sample")
-    virtual void FuncNonOverridableBoth() final;
+	virtual void FuncNonOverridableBoth() final;
     
 };
